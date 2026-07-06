@@ -1,0 +1,590 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 71;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D100000100000001 /* DashboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000001 /* DashboardApp.swift */; };
+		D100000100000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000002 /* ContentView.swift */; };
+		D100000100000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D100000200000003 /* Assets.xcassets */; };
+		D100000100000004 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000004 /* AppState.swift */; };
+		D100000100000005 /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000005 /* UserModels.swift */; };
+		D100000100000006 /* WidgetModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000006 /* WidgetModels.swift */; };
+		D100000100000007 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000007 /* KeychainHelper.swift */; };
+		D100000100000008 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000008 /* AuthService.swift */; };
+		D100000100000009 /* DashboardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000009 /* DashboardStore.swift */; };
+		D10000010000000A /* WidgetRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000000A /* WidgetRegistry.swift */; };
+		D10000010000000B /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000000B /* HapticHelper.swift */; };
+		D10000010000000C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000000C /* LoginView.swift */; };
+		D10000010000000D /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000000D /* DashboardView.swift */; };
+		D10000010000000E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000000E /* SettingsView.swift */; };
+		D10000010000000F /* EmptyDashboardCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000010 /* EmptyDashboardCTA.swift */; };
+		D100000100000011 /* WidgetRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000011 /* WidgetRenderer.swift */; };
+		D100000100000012 /* PlaceholderWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000012 /* PlaceholderWidgetView.swift */; };
+		D100000100000013 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000021 /* MainView.swift */; };
+		D100000100000014 /* WidgetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000022 /* WidgetCard.swift */; };
+		D100000100000015 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000023 /* LocationManager.swift */; };
+		D100000100000016 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000024 /* WeatherService.swift */; };
+		D100000100000017 /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000026 /* PhotoLibraryService.swift */; };
+		D100000100000019 /* ClockWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000027 /* ClockWidgetView.swift */; };
+		D10000010000001A /* WeatherWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000028 /* WeatherWidgetView.swift */; };
+		D10000010000001B /* SpotifyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000029 /* SpotifyWidgetView.swift */; };
+		D10000010000001C /* PhotosWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000002A /* PhotosWidgetView.swift */; };
+		D10000010000001D /* AlbumsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000002B /* AlbumsWidgetView.swift */; };
+		D10000010000001E /* GridLayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000002C /* GridLayoutEngine.swift */; };
+		D10000010000001F /* WidgetDragPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000002D /* WidgetDragPayload.swift */; };
+		D100000100000020 /* GlassStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000002E /* GlassStyle.swift */; };
+		D100000100000021 /* DashboardCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000002F /* DashboardCanvas.swift */; };
+		D100000100000022 /* EditableDashboardCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000030 /* EditableDashboardCanvas.swift */; };
+		D100000100000023 /* SpotifyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000031 /* SpotifyConfig.swift */; };
+		D100000100000024 /* SpotifyAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000032 /* SpotifyAuthService.swift */; };
+		D100000100000025 /* SpotifyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000033 /* SpotifyAPIService.swift */; };
+        D100000100000026 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000034 /* SpotifyService.swift */; };
+		D100000100000027 /* DashboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000035 /* DashboardTheme.swift */; };
+		D100000100000028 /* OpenMeteoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000036 /* OpenMeteoService.swift */; };
+		D100000100000029 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000037 /* AppConfig.swift */; };
+		D10000010000002A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000038 /* APIClient.swift */; };
+		D10000010000002B /* BackendAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000039 /* BackendAuthService.swift */; };
+		D10000010000002C /* DashboardSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000003A /* DashboardSyncService.swift */; };
+		D10000010000002D /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000003B /* FriendsService.swift */; };
+		D10000010000002E /* ServerMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000003C /* ServerMonitoringService.swift */; };
+		D10000010000002F /* SettingsShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000003D /* SettingsShellView.swift */; };
+		D100000100000030 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000003E /* ProfileTabView.swift */; };
+		D100000100000031 /* FriendsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000003F /* FriendsTabView.swift */; };
+		D100000100000032 /* ShareDashboardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000040 /* ShareDashboardSheet.swift */; };
+		D100000100000033 /* ServerManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000041 /* ServerManagementView.swift */; };
+		D100000100000034 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000042 /* SettingsTabView.swift */; };
+		D100000100000035 /* ServerWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000043 /* ServerWidgetView.swift */; };
+		D100000100000050 /* WidgetPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000050 /* WidgetPreferences.swift */; };
+		D100000100000051 /* AgendaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000051 /* AgendaService.swift */; };
+		D100000100000052 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000052 /* TasksService.swift */; };
+		D100000100000053 /* WorldClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000053 /* WorldClockService.swift */; };
+		D100000100000054 /* ExchangeRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000054 /* ExchangeRateService.swift */; };
+		D100000100000055 /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000055 /* ContactsService.swift */; };
+		D100000100000056 /* PomodoroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000056 /* PomodoroService.swift */; };
+		D100000100000057 /* NetworkMonitorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000057 /* NetworkMonitorService.swift */; };
+		D100000100000058 /* AgendaWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000058 /* AgendaWidgetView.swift */; };
+		D100000100000059 /* TasksWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000059 /* TasksWidgetView.swift */; };
+		D10000010000005A /* WorldClockWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005A /* WorldClockWidgetView.swift */; };
+		D10000010000005B /* ExchangeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005B /* ExchangeWidgetView.swift */; };
+		D10000010000005C /* ContactsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005C /* ContactsWidgetView.swift */; };
+		D10000010000005D /* PomodoroWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005D /* PomodoroWidgetView.swift */; };
+		D10000010000005E /* NetworkWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005E /* NetworkWidgetView.swift */; };
+		D10000010000005F /* ContactPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005F /* ContactPickerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D100000200000001 /* DashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardApp.swift; sourceTree = "<group>"; };
+		D100000200000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D100000200000003 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D100000200000004 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D100000200000005 /* UserModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModels.swift; sourceTree = "<group>"; };
+		D100000200000006 /* WidgetModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModels.swift; sourceTree = "<group>"; };
+		D100000200000007 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		D100000200000008 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		D100000200000009 /* DashboardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardStore.swift; sourceTree = "<group>"; };
+		D10000020000000A /* WidgetRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRegistry.swift; sourceTree = "<group>"; };
+		D10000020000000B /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
+		D10000020000000C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D10000020000000D /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		D10000020000000E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D100000200000010 /* EmptyDashboardCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDashboardCTA.swift; sourceTree = "<group>"; };
+		D100000200000011 /* WidgetRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRenderer.swift; sourceTree = "<group>"; };
+		D100000200000012 /* PlaceholderWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderWidgetView.swift; sourceTree = "<group>"; };
+		D100000200000021 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D100000200000022 /* WidgetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCard.swift; sourceTree = "<group>"; };
+		D100000200000023 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D100000200000024 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		D100000200000026 /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryService.swift; sourceTree = "<group>"; };
+		D100000200000027 /* ClockWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWidgetView.swift; sourceTree = "<group>"; };
+		D100000200000028 /* WeatherWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWidgetView.swift; sourceTree = "<group>"; };
+		D100000200000029 /* SpotifyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000002A /* PhotosWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000002B /* AlbumsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000002C /* GridLayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayoutEngine.swift; sourceTree = "<group>"; };
+		D10000020000002D /* WidgetDragPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDragPayload.swift; sourceTree = "<group>"; };
+		D10000020000002E /* GlassStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassStyle.swift; sourceTree = "<group>"; };
+		D10000020000002F /* DashboardCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCanvas.swift; sourceTree = "<group>"; };
+		D100000200000030 /* EditableDashboardCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableDashboardCanvas.swift; sourceTree = "<group>"; };
+		D100000200000031 /* SpotifyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConfig.swift; sourceTree = "<group>"; };
+		D100000200000032 /* SpotifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuthService.swift; sourceTree = "<group>"; };
+		D100000200000033 /* SpotifyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPIService.swift; sourceTree = "<group>"; };
+		D100000200000034 /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
+		D100000200000035 /* DashboardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTheme.swift; sourceTree = "<group>"; };
+		D100000200000036 /* OpenMeteoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMeteoService.swift; sourceTree = "<group>"; };
+		D100000200000037 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		D100000200000038 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		D100000200000039 /* BackendAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAuthService.swift; sourceTree = "<group>"; };
+		D10000020000003A /* DashboardSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardSyncService.swift; sourceTree = "<group>"; };
+		D10000020000003B /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
+		D10000020000003C /* ServerMonitoringService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerMonitoringService.swift; sourceTree = "<group>"; };
+		D10000020000003D /* SettingsShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsShellView.swift; sourceTree = "<group>"; };
+		D10000020000003E /* ProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
+		D10000020000003F /* FriendsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabView.swift; sourceTree = "<group>"; };
+		D100000200000040 /* ShareDashboardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDashboardSheet.swift; sourceTree = "<group>"; };
+		D100000200000041 /* ServerManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManagementView.swift; sourceTree = "<group>"; };
+		D100000200000042 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		D100000200000043 /* ServerWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerWidgetView.swift; sourceTree = "<group>"; };
+		D100000200000050 /* WidgetPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreferences.swift; sourceTree = "<group>"; };
+		D100000200000051 /* AgendaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaService.swift; sourceTree = "<group>"; };
+		D100000200000052 /* TasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksService.swift; sourceTree = "<group>"; };
+		D100000200000053 /* WorldClockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockService.swift; sourceTree = "<group>"; };
+		D100000200000054 /* ExchangeRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateService.swift; sourceTree = "<group>"; };
+		D100000200000055 /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
+		D100000200000056 /* PomodoroService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroService.swift; sourceTree = "<group>"; };
+		D100000200000057 /* NetworkMonitorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorService.swift; sourceTree = "<group>"; };
+		D100000200000058 /* AgendaWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaWidgetView.swift; sourceTree = "<group>"; };
+		D100000200000059 /* TasksWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000005A /* WorldClockWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000005B /* ExchangeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000005C /* ContactsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000005D /* PomodoroWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000005E /* NetworkWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWidgetView.swift; sourceTree = "<group>"; };
+		D10000020000005F /* ContactPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerView.swift; sourceTree = "<group>"; };
+		D100000200000013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D100000200000014 /* Dashboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dashboard.entitlements; sourceTree = "<group>"; };
+		D100000300000001 /* Dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D100000400000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D100000500000001 = {
+			isa = PBXGroup;
+			children = (
+				D100000500000002 /* Dashboard */,
+				D100000500000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D100000500000002 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				D100000200000001 /* DashboardApp.swift */,
+				D100000200000002 /* ContentView.swift */,
+				D100000200000004 /* AppState.swift */,
+				D100000500000004 /* Models */,
+				D100000500000009 /* Config */,
+				D100000500000005 /* Services */,
+				D100000500000006 /* Views */,
+				D100000500000007 /* Widgets */,
+				D100000200000003 /* Assets.xcassets */,
+				D100000200000013 /* Info.plist */,
+				D100000200000014 /* Dashboard.entitlements */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		D100000500000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D100000300000001 /* Dashboard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D100000500000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D100000200000005 /* UserModels.swift */,
+				D100000200000006 /* WidgetModels.swift */,
+				D10000020000002D /* WidgetDragPayload.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D100000500000009 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D100000200000031 /* SpotifyConfig.swift */,
+				D100000200000037 /* AppConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		D100000500000005 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D100000200000007 /* KeychainHelper.swift */,
+				D100000200000008 /* AuthService.swift */,
+				D100000200000009 /* DashboardStore.swift */,
+				D100000200000038 /* APIClient.swift */,
+				D100000200000039 /* BackendAuthService.swift */,
+				D10000020000003A /* DashboardSyncService.swift */,
+				D10000020000003B /* FriendsService.swift */,
+				D10000020000003C /* ServerMonitoringService.swift */,
+				D10000020000000A /* WidgetRegistry.swift */,
+				D10000020000000B /* HapticHelper.swift */,
+				D100000200000023 /* LocationManager.swift */,
+				D100000200000024 /* WeatherService.swift */,
+				D100000200000036 /* OpenMeteoService.swift */,
+				D100000200000032 /* SpotifyAuthService.swift */,
+				D100000200000033 /* SpotifyAPIService.swift */,
+				D100000200000034 /* SpotifyService.swift */,
+				D100000200000026 /* PhotoLibraryService.swift */,
+				D10000020000002C /* GridLayoutEngine.swift */,
+				D100000200000050 /* WidgetPreferences.swift */,
+				D100000200000051 /* AgendaService.swift */,
+				D100000200000052 /* TasksService.swift */,
+				D100000200000053 /* WorldClockService.swift */,
+				D100000200000054 /* ExchangeRateService.swift */,
+				D100000200000055 /* ContactsService.swift */,
+				D100000200000056 /* PomodoroService.swift */,
+				D100000200000057 /* NetworkMonitorService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D100000500000006 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D10000020000000C /* LoginView.swift */,
+				D10000020000000D /* DashboardView.swift */,
+				D10000020000000E /* SettingsView.swift */,
+				D100000200000021 /* MainView.swift */,
+				D10000050000000A /* Settings */,
+				D100000500000008 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D10000050000000A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D10000020000003D /* SettingsShellView.swift */,
+				D100000200000042 /* SettingsTabView.swift */,
+				D10000020000003E /* ProfileTabView.swift */,
+				D10000020000003F /* FriendsTabView.swift */,
+				D100000200000040 /* ShareDashboardSheet.swift */,
+				D100000200000041 /* ServerManagementView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D100000500000007 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				D100000200000011 /* WidgetRenderer.swift */,
+				D100000200000012 /* PlaceholderWidgetView.swift */,
+				D100000200000027 /* ClockWidgetView.swift */,
+				D100000200000028 /* WeatherWidgetView.swift */,
+				D100000200000029 /* SpotifyWidgetView.swift */,
+				D10000020000002A /* PhotosWidgetView.swift */,
+				D10000020000002B /* AlbumsWidgetView.swift */,
+				D100000200000043 /* ServerWidgetView.swift */,
+				D100000200000058 /* AgendaWidgetView.swift */,
+				D100000200000059 /* TasksWidgetView.swift */,
+				D10000020000005A /* WorldClockWidgetView.swift */,
+				D10000020000005B /* ExchangeWidgetView.swift */,
+				D10000020000005C /* ContactsWidgetView.swift */,
+				D10000020000005D /* PomodoroWidgetView.swift */,
+				D10000020000005E /* NetworkWidgetView.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		D100000500000008 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D100000200000010 /* EmptyDashboardCTA.swift */,
+				D100000200000022 /* WidgetCard.swift */,
+				D10000020000002E /* GlassStyle.swift */,
+				D100000200000035 /* DashboardTheme.swift */,
+				D10000020000002F /* DashboardCanvas.swift */,
+				D100000200000030 /* EditableDashboardCanvas.swift */,
+				D10000020000005F /* ContactPickerView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D100000600000001 /* Dashboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D100000800000003 /* Build configuration list for PBXNativeTarget "Dashboard" */;
+			buildPhases = (
+				D100000700000001 /* Sources */,
+				D100000400000001 /* Frameworks */,
+				D100000700000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dashboard;
+			productName = Dashboard;
+			productReference = D100000300000001 /* Dashboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D100000900000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					D100000600000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = D100000800000001 /* Build configuration list for PBXProject "Dashboard" */;
+			compatibilityVersion = "Xcode 16.0";
+			developmentRegion = sk;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				sk,
+			);
+			mainGroup = D100000500000001;
+			productRefGroup = D100000500000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D100000600000001 /* Dashboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D100000700000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D100000100000003 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D100000700000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D100000100000001 /* DashboardApp.swift in Sources */,
+				D100000100000002 /* ContentView.swift in Sources */,
+				D100000100000004 /* AppState.swift in Sources */,
+				D100000100000005 /* UserModels.swift in Sources */,
+				D100000100000006 /* WidgetModels.swift in Sources */,
+				D100000100000007 /* KeychainHelper.swift in Sources */,
+				D100000100000008 /* AuthService.swift in Sources */,
+				D100000100000009 /* DashboardStore.swift in Sources */,
+				D10000010000000A /* WidgetRegistry.swift in Sources */,
+				D10000010000000B /* HapticHelper.swift in Sources */,
+				D10000010000000C /* LoginView.swift in Sources */,
+				D10000010000000D /* DashboardView.swift in Sources */,
+				D10000010000000E /* SettingsView.swift in Sources */,
+				D10000010000000F /* EmptyDashboardCTA.swift in Sources */,
+				D100000100000011 /* WidgetRenderer.swift in Sources */,
+				D100000100000012 /* PlaceholderWidgetView.swift in Sources */,
+				D100000100000013 /* MainView.swift in Sources */,
+				D100000100000014 /* WidgetCard.swift in Sources */,
+				D100000100000015 /* LocationManager.swift in Sources */,
+				D100000100000016 /* WeatherService.swift in Sources */,
+				D100000100000017 /* PhotoLibraryService.swift in Sources */,
+				D100000100000019 /* ClockWidgetView.swift in Sources */,
+				D10000010000001A /* WeatherWidgetView.swift in Sources */,
+				D10000010000001B /* SpotifyWidgetView.swift in Sources */,
+				D10000010000001C /* PhotosWidgetView.swift in Sources */,
+				D10000010000001D /* AlbumsWidgetView.swift in Sources */,
+				D10000010000001E /* GridLayoutEngine.swift in Sources */,
+				D10000010000001F /* WidgetDragPayload.swift in Sources */,
+				D100000100000020 /* GlassStyle.swift in Sources */,
+				D100000100000021 /* DashboardCanvas.swift in Sources */,
+				D100000100000022 /* EditableDashboardCanvas.swift in Sources */,
+				D100000100000023 /* SpotifyConfig.swift in Sources */,
+				D100000100000024 /* SpotifyAuthService.swift in Sources */,
+				D100000100000025 /* SpotifyAPIService.swift in Sources */,
+				D100000100000026 /* SpotifyService.swift in Sources */,
+				D100000100000027 /* DashboardTheme.swift in Sources */,
+				D100000100000028 /* OpenMeteoService.swift in Sources */,
+				D100000100000029 /* AppConfig.swift in Sources */,
+				D10000010000002A /* APIClient.swift in Sources */,
+				D10000010000002B /* BackendAuthService.swift in Sources */,
+				D10000010000002C /* DashboardSyncService.swift in Sources */,
+				D10000010000002D /* FriendsService.swift in Sources */,
+				D10000010000002E /* ServerMonitoringService.swift in Sources */,
+				D10000010000002F /* SettingsShellView.swift in Sources */,
+				D100000100000030 /* ProfileTabView.swift in Sources */,
+				D100000100000031 /* FriendsTabView.swift in Sources */,
+				D100000100000032 /* ShareDashboardSheet.swift in Sources */,
+				D100000100000033 /* ServerManagementView.swift in Sources */,
+				D100000100000034 /* SettingsTabView.swift in Sources */,
+				D100000100000035 /* ServerWidgetView.swift in Sources */,
+				D100000100000050 /* WidgetPreferences.swift in Sources */,
+				D100000100000051 /* AgendaService.swift in Sources */,
+				D100000100000052 /* TasksService.swift in Sources */,
+				D100000100000053 /* WorldClockService.swift in Sources */,
+				D100000100000054 /* ExchangeRateService.swift in Sources */,
+				D100000100000055 /* ContactsService.swift in Sources */,
+				D100000100000056 /* PomodoroService.swift in Sources */,
+				D100000100000057 /* NetworkMonitorService.swift in Sources */,
+				D100000100000058 /* AgendaWidgetView.swift in Sources */,
+				D100000100000059 /* TasksWidgetView.swift in Sources */,
+				D10000010000005A /* WorldClockWidgetView.swift in Sources */,
+				D10000010000005B /* ExchangeWidgetView.swift in Sources */,
+				D10000010000005C /* ContactsWidgetView.swift in Sources */,
+				D10000010000005D /* PomodoroWidgetView.swift in Sources */,
+				D10000010000005E /* NetworkWidgetView.swift in Sources */,
+				D10000010000005F /* ContactPickerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D100000A00000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D100000A00000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D100000A00000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Dashboard/Dashboard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G5X3XUD9C9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Dashboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Dashboard;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.romanbednarik.dashboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D100000A00000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Dashboard/Dashboard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G5X3XUD9C9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Dashboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Dashboard;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.romanbednarik.dashboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D100000800000001 /* Build configuration list for PBXProject "Dashboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D100000A00000001 /* Debug */,
+				D100000A00000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D100000800000003 /* Build configuration list for PBXNativeTarget "Dashboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D100000A00000003 /* Debug */,
+				D100000A00000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D100000900000001 /* Project object */;
+}
