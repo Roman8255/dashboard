@@ -3,16 +3,19 @@ import SwiftUI
 struct ServerManagementView: View {
     @ObservedObject private var service = ServerMonitoringService.shared
 
+    @Binding var navigationPath: NavigationPath
+
     @State private var newServerName = ""
-    @State private var createdResponse: CreateServerResponse?
     @State private var alertMessage: String?
+    @State private var testingServerId: String?
+    @State private var testResults: [String: ServerConnectionTestResult] = [:]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Label("Monitorovanie servera", systemImage: "server.rack")
                 .font(.headline)
 
-            Text("Pridajte server a spustite vygenerovaný príkaz na Linuxe.")
+            Text("Pridajte server a v detaile nájdete príkazy na inštaláciu agenta.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
@@ -27,34 +30,8 @@ struct ServerManagementView: View {
                 .disabled(newServerName.trimmingCharacters(in: .whitespaces).isEmpty)
             }
 
-            if let createdResponse {
-                commandBlock(title: "Inštalácia", command: createdResponse.installCommand)
-                commandBlock(title: "Zastavenie", command: createdResponse.stopCommand)
-            }
-
             ForEach(service.servers) { server in
-                HStack {
-                    Circle()
-                        .fill(server.online ? Color.green : Color.red)
-                        .frame(width: 8, height: 8)
-                    VStack(alignment: .leading) {
-                        Text(server.name)
-                            .font(.subheadline.bold())
-                        Text(server.hostname ?? "Čaká na prvé dáta")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    Spacer()
-                    Button(role: .destructive) {
-                        Task {
-                            try? await service.deleteServer(id: server.id)
-                        }
-                    } label: {
-                        Image(systemName: "trash")
-                    }
-                }
-                .padding()
-                .glassCard(cornerRadius: 14)
+                serverRow(server)
             }
         }
         .task { await service.refresh() }
@@ -68,21 +45,55 @@ struct ServerManagementView: View {
         }
     }
 
-    private func commandBlock(title: String, command: String) -> some View {
+    private func serverRow(_ server: ServerAgent) -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(title)
-                .font(.caption.bold())
-            Text(command)
-                .font(.caption2.monospaced())
-                .textSelection(.enabled)
-                .padding(10)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.black.opacity(0.25), in: RoundedRectangle(cornerRadius: 10))
-            Button("Kopírovať") {
-                UIPasteboard.general.string = command
-                alertMessage = "Príkaz skopírovaný"
+            HStack(spacing: 10) {
+                Circle()
+                    .fill(server.online ? Color.green : Color.red)
+                    .frame(width: 8, height: 8)
+
+                NavigationLink(value: WidgetSettingsRoute.server(server.id)) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(server.name)
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.primary)
+                        Text(server.hostname ?? "Čaká na prvé dáta")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+
+                Button {
+                    Task { await testServer(server) }
+                } label: {
+                    if testingServerId == server.id {
+                        ProgressView()
+                            .controlSize(.small)
+                    } else {
+                        Image(systemName: "antenna.radiowaves.left.and.right")
+                    }
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+                .disabled(testingServerId != nil)
+
+                Button(role: .destructive) {
+                    Task {
+                        try? await service.deleteServer(id: server.id)
+                        testResults[server.id] = nil
+                    }
+                } label: {
+                    Image(systemName: "trash")
+                }
+                .buttonStyle(.borderless)
             }
-            .font(.caption.bold())
+
+            if let result = testResults[server.id] {
+                Text(result.message)
+                    .font(.caption2)
+                    .foregroundStyle(result.online ? .green : .orange)
+            }
         }
         .padding()
         .glassCard(cornerRadius: 14)
@@ -93,10 +104,22 @@ struct ServerManagementView: View {
             let response = try await service.createServer(
                 name: newServerName.trimmingCharacters(in: .whitespaces)
             )
-            createdResponse = response
             newServerName = ""
+            navigationPath.append(WidgetSettingsRoute.server(response.server.id))
         } catch {
             alertMessage = error.localizedDescription
+        }
+    }
+
+    private func testServer(_ server: ServerAgent) async {
+        testingServerId = server.id
+        let result = await service.testConnection(serverId: server.id)
+        testResults[server.id] = result
+        testingServerId = nil
+        if result.online {
+            HapticHelper.success()
+        } else {
+            HapticHelper.lightImpact()
         }
     }
 }

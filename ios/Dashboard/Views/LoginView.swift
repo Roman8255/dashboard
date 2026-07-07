@@ -14,9 +14,12 @@ struct LoginView: View {
                 Spacer()
 
                 VStack(spacing: 12) {
-                    Image(systemName: "square.grid.3x3.fill")
-                        .font(.system(size: 72))
-                        .foregroundStyle(Color.accentColor)
+                    Image("Logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 96, height: 96)
+                        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                        .shadow(color: .black.opacity(0.3), radius: 12, y: 6)
 
                     Text("Dashboard")
                         .font(.largeTitle.bold())

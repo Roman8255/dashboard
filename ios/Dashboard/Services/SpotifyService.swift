@@ -28,6 +28,7 @@ final class SpotifyService: ObservableObject {
   private var lastSyncDate = Date()
   private var lastKnownPositionMs = 0
   private var lastKnownIsPlaying = false
+  private var hasLoadedOnce = false
 
   private init() {
     isAuthorized = SpotifyAuthService.shared.isAuthorized
@@ -46,15 +47,22 @@ final class SpotifyService: ObservableObject {
     }
   }
 
-  func refreshPlayback() async {
+  func refreshPlayback(showLoading: Bool = false) async {
     isAuthorized = SpotifyAuthService.shared.isAuthorized
     guard SpotifyAuthService.shared.isAuthorized else {
       refreshFromSystemNowPlaying()
+      hasLoadedOnce = true
       return
     }
 
-    isLoading = playback == nil
-    defer { isLoading = false }
+    if showLoading && !hasLoadedOnce {
+      isLoading = true
+    }
+
+    defer {
+      isLoading = false
+      hasLoadedOnce = true
+    }
 
     do {
       let token = try await SpotifyAuthService.shared.validAccessToken()
@@ -66,6 +74,12 @@ final class SpotifyService: ObservableObject {
         statusMessage = nil
         return
       }
+
+      // API says nothing is playing — stay idle, don't fall back to stale system info.
+      playback = nil
+      lastKnownIsPlaying = false
+      statusMessage = nil
+      return
     } catch {
       statusMessage = error.localizedDescription
     }
@@ -149,9 +163,8 @@ final class SpotifyService: ObservableObject {
   private func refreshFromSystemNowPlaying() {
     let center = MPNowPlayingInfoCenter.default()
     guard let info = center.nowPlayingInfo else {
-      if !SpotifyAuthService.shared.isAuthorized {
-        playback = nil
-      }
+      playback = nil
+      lastKnownIsPlaying = false
       return
     }
 

@@ -2,8 +2,12 @@ import SwiftUI
 
 /// Legacy entry point — settings UI lives in `SettingsShellView` / `SettingsTabView`.
 struct SettingsView: View {
+    @State private var navigationPath = NavigationPath()
+
     var body: some View {
-        SettingsTabView()
+        NavigationStack(path: $navigationPath) {
+            SettingsTabView(navigationPath: $navigationPath)
+        }
     }
 }
 

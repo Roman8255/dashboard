@@ -7,55 +7,71 @@ enum SettingsTab: Hashable {
 }
 
 struct SettingsShellView: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var appState: AppState
     @State private var selectedTab: SettingsTab = .settings
+    @State private var settingsPath = NavigationPath()
 
     var body: some View {
-        VStack(spacing: 0) {
-            Group {
-                switch selectedTab {
-                case .settings:
-                    SettingsTabView()
-                case .profile:
-                    ProfileTabView()
-                case .friends:
-                    FriendsTabView()
-                }
+        TabView(selection: $selectedTab) {
+            NavigationStack(path: $settingsPath) {
+                SettingsTabView(navigationPath: $settingsPath)
+                    .navigationTitle("Nastavenia")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button("Zavrieť") { dismiss() }
+                        }
+                    }
+                    .navigationDestination(for: WidgetSettingsRoute.self) { route in
+                        switch route {
+                        case .server(let id):
+                            ServerDetailView(serverId: id)
+                        case .worldClock:
+                            WorldClockSettingsView()
+                        case .contacts:
+                            ContactsWidgetSettingsView()
+                        case .exchange:
+                            ExchangeWidgetSettingsView()
+                        }
+                    }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-            Divider().opacity(0.25)
-
-            HStack {
-                tabButton(.settings, title: "Nastavenia", icon: "gearshape.fill")
-                tabButton(.profile, title: "Profil", icon: "person.fill")
-                tabButton(.friends, title: "Priatelia", icon: "person.2.fill")
+            .tabItem {
+                Label("Nastavenia", systemImage: "gearshape.fill")
             }
-            .padding(.horizontal, 8)
-            .padding(.top, 8)
-            .padding(.bottom, 12)
-            .background(.ultraThinMaterial)
+            .tag(SettingsTab.settings)
+
+            NavigationStack {
+                ProfileTabView()
+                    .navigationTitle("Profil")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button("Zavrieť") { dismiss() }
+                        }
+                    }
+            }
+            .tabItem {
+                Label("Profil", systemImage: "person.fill")
+            }
+            .tag(SettingsTab.profile)
+
+            NavigationStack {
+                FriendsTabView()
+                    .navigationTitle("Priatelia")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button("Zavrieť") { dismiss() }
+                        }
+                    }
+            }
+            .tabItem {
+                Label("Priatelia", systemImage: "person.2.fill")
+            }
+            .tag(SettingsTab.friends)
         }
+        .tint(Color.accentColor)
         .dashboardBackground()
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar(.hidden, for: .navigationBar)
-    }
-
-    private func tabButton(_ tab: SettingsTab, title: String, icon: String) -> some View {
-        Button {
-            HapticHelper.lightImpact()
-            selectedTab = tab
-        } label: {
-            VStack(spacing: 4) {
-                Image(systemName: icon)
-                    .font(.body)
-                Text(title)
-                    .font(.caption2)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 8)
-            .foregroundStyle(selectedTab == tab ? Color.accentColor : .secondary)
-        }
-        .buttonStyle(.plain)
     }
 }

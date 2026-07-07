@@ -74,6 +74,13 @@
 		D10000010000005D /* PomodoroWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005D /* PomodoroWidgetView.swift */; };
 		D10000010000005E /* NetworkWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005E /* NetworkWidgetView.swift */; };
 		D10000010000005F /* ContactPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000020000005F /* ContactPickerView.swift */; };
+		D100000100000060 /* WidgetSettingsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000060 /* WidgetSettingsRoute.swift */; };
+		D100000100000061 /* SettingsComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000061 /* SettingsComponents.swift */; };
+		D100000100000062 /* ServerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000062 /* ServerDetailView.swift */; };
+		D100000100000063 /* WorldClockSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000063 /* WorldClockSettingsView.swift */; };
+		D100000100000064 /* ContactsWidgetSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000064 /* ContactsWidgetSettingsView.swift */; };
+		D100000100000065 /* ExchangeWidgetSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000065 /* ExchangeWidgetSettingsView.swift */; };
+		D100000100000066 /* ServerAgentCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100000200000066 /* ServerAgentCredentialStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +151,13 @@
 		D10000020000005D /* PomodoroWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroWidgetView.swift; sourceTree = "<group>"; };
 		D10000020000005E /* NetworkWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWidgetView.swift; sourceTree = "<group>"; };
 		D10000020000005F /* ContactPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerView.swift; sourceTree = "<group>"; };
+		D100000200000060 /* WidgetSettingsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingsRoute.swift; sourceTree = "<group>"; };
+		D100000200000061 /* SettingsComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsComponents.swift; sourceTree = "<group>"; };
+		D100000200000062 /* ServerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDetailView.swift; sourceTree = "<group>"; };
+		D100000200000063 /* WorldClockSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSettingsView.swift; sourceTree = "<group>"; };
+		D100000200000064 /* ContactsWidgetSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsWidgetSettingsView.swift; sourceTree = "<group>"; };
+		D100000200000065 /* ExchangeWidgetSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWidgetSettingsView.swift; sourceTree = "<group>"; };
+		D100000200000066 /* ServerAgentCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerAgentCredentialStore.swift; sourceTree = "<group>"; };
 		D100000200000013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D100000200000014 /* Dashboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dashboard.entitlements; sourceTree = "<group>"; };
 		D100000300000001 /* Dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +238,7 @@
 				D10000020000003A /* DashboardSyncService.swift */,
 				D10000020000003B /* FriendsService.swift */,
 				D10000020000003C /* ServerMonitoringService.swift */,
+				D100000200000066 /* ServerAgentCredentialStore.swift */,
 				D10000020000000A /* WidgetRegistry.swift */,
 				D10000020000000B /* HapticHelper.swift */,
 				D100000200000023 /* LocationManager.swift */,
@@ -268,6 +283,12 @@
 				D10000020000003F /* FriendsTabView.swift */,
 				D100000200000040 /* ShareDashboardSheet.swift */,
 				D100000200000041 /* ServerManagementView.swift */,
+				D100000200000060 /* WidgetSettingsRoute.swift */,
+				D100000200000061 /* SettingsComponents.swift */,
+				D100000200000062 /* ServerDetailView.swift */,
+				D100000200000063 /* WorldClockSettingsView.swift */,
+				D100000200000064 /* ContactsWidgetSettingsView.swift */,
+				D100000200000065 /* ExchangeWidgetSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -444,6 +465,13 @@
 				D10000010000005D /* PomodoroWidgetView.swift in Sources */,
 				D10000010000005E /* NetworkWidgetView.swift in Sources */,
 				D10000010000005F /* ContactPickerView.swift in Sources */,
+				D100000100000060 /* WidgetSettingsRoute.swift in Sources */,
+				D100000100000061 /* SettingsComponents.swift in Sources */,
+				D100000100000062 /* ServerDetailView.swift in Sources */,
+				D100000100000063 /* WorldClockSettingsView.swift in Sources */,
+				D100000100000064 /* ContactsWidgetSettingsView.swift in Sources */,
+				D100000100000065 /* ExchangeWidgetSettingsView.swift in Sources */,
+				D100000100000066 /* ServerAgentCredentialStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsTabView: View {
     @ObservedObject private var store = DashboardStore.shared
 
+    @Binding var navigationPath: NavigationPath
     @State private var pendingType: WidgetTypeDefinition?
     @State private var pendingServerId: String?
     @State private var showStylePicker = false
@@ -11,7 +12,6 @@ struct SettingsTabView: View {
     @State private var newDashboardName = ""
     @State private var showCreateDashboard = false
     @State private var editorMetrics = GridMetrics.computeEditor(from: 390)
-    @State private var showContactPicker = false
     @ObservedObject private var widgetPreferences = WidgetPreferencesStore.shared
 
     var body: some View {
@@ -27,7 +27,7 @@ struct SettingsTabView: View {
                 dashboardSection
                 gallerySection
                 widgetPreferencesSection
-                ServerManagementView()
+                ServerManagementView(navigationPath: $navigationPath)
             }
             .padding()
         }
@@ -172,79 +172,42 @@ struct SettingsTabView: View {
 
     private var widgetPreferencesSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label("Widgety", systemImage: "slider.horizontal.3")
+            Label("Nastavenia widgetov", systemImage: "slider.horizontal.3")
                 .font(.headline)
 
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Svetové hodiny")
-                    .font(.subheadline.bold())
-                Text("Vyberte až 3 mestá.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                ForEach(WorldClockCityCatalog.options, id: \.id) { city in
-                    let isSelected = widgetPreferences.preferences.worldClockCities.contains(city.id)
-                    Button {
-                        toggleWorldClockCity(city.id)
-                    } label: {
-                        HStack {
-                            Text(city.name)
-                                .foregroundStyle(.primary)
-                            Spacer()
-                            if isSelected {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .foregroundStyle(Color.accentColor)
-                            }
-                        }
-                        .font(.subheadline)
-                    }
-                    .buttonStyle(.plain)
-                }
+            NavigationLink(value: WidgetSettingsRoute.worldClock) {
+                SettingsMenuRow(
+                    title: "Svetové hodiny",
+                    subtitle: worldClockSubtitle,
+                    icon: "globe"
+                )
             }
-            .padding()
-            .glassCard(cornerRadius: 16)
+            .buttonStyle(.plain)
 
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Obľúbené kontakty")
-                    .font(.subheadline.bold())
-                Text("Vyberte až 4 kontakty pre widget Kontakty.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                Text("\(widgetPreferences.preferences.favoriteContactIDs.count) vybraných")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                Button("Vybrať kontakty") {
-                    showContactPicker = true
-                }
-                .buttonStyle(.borderedProminent)
+            NavigationLink(value: WidgetSettingsRoute.contacts) {
+                SettingsMenuRow(
+                    title: "Kontakty",
+                    subtitle: "\(widgetPreferences.preferences.favoriteContactIDs.count) vybraných",
+                    icon: "person.2.fill"
+                )
             }
-            .padding()
-            .glassCard(cornerRadius: 16)
-        }
-        .sheet(isPresented: $showContactPicker) {
-            ContactPickerView { ids in
-                widgetPreferences.update { prefs in
-                    prefs.favoriteContactIDs = Array(ids.prefix(4))
-                }
-                WorldClockService.shared.reload()
-                Task { await ContactsService.shared.refresh() }
+            .buttonStyle(.plain)
+
+            NavigationLink(value: WidgetSettingsRoute.exchange) {
+                SettingsMenuRow(
+                    title: "Kurzy mien",
+                    subtitle: "Základná mena: \(widgetPreferences.preferences.exchangeBaseCurrency)",
+                    icon: "coloncurrencysign.circle"
+                )
             }
+            .buttonStyle(.plain)
         }
     }
 
-    private func toggleWorldClockCity(_ cityId: String) {
-        widgetPreferences.update { prefs in
-            if let index = prefs.worldClockCities.firstIndex(of: cityId) {
-                prefs.worldClockCities.remove(at: index)
-            } else if prefs.worldClockCities.count < 3 {
-                prefs.worldClockCities.append(cityId)
-            } else {
-                alertMessage = "Maximálne 3 mestá pre svetové hodiny."
-            }
-        }
-        WorldClockService.shared.reload()
+    private var worldClockSubtitle: String {
+        let names = widgetPreferences.preferences.worldClockCities
+            .map { WorldClockCityCatalog.name(for: $0) }
+        return names.isEmpty ? "Žiadne mestá" : names.joined(separator: ", ")
     }
 
     private func galleryCard(for type: WidgetTypeDefinition) -> some View {
@@ -299,7 +262,6 @@ struct SettingsTabView: View {
     }
 
     private func showServerPicker(for type: WidgetTypeDefinition) {
-        // Simple: use first server; user can manage servers above
         pendingServerId = ServerMonitoringService.shared.servers.first?.id
         pendingType = type
         showStylePicker = true

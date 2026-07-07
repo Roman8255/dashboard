@@ -30,6 +30,8 @@ struct WidgetRenderer: View {
             PomodoroWidgetView(widgetId: widget.id, styleId: widget.styleId)
         case "network":
             NetworkWidgetView(styleId: widget.styleId)
+        case "server":
+            ServerWidgetView(widget: widget)
         default:
             PlaceholderWidgetView(typeId: widget.typeId, styleId: widget.styleId)
         }

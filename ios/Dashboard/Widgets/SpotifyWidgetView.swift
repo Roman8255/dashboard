@@ -30,7 +30,7 @@ struct SpotifyWidgetView: View {
     }
     .onAppear {
       spotify.connectIfNeeded()
-      Task { await spotify.refreshPlayback() }
+      Task { await spotify.refreshPlayback(showLoading: true) }
     }
   }
 
