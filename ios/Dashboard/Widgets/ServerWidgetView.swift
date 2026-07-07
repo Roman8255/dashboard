@@ -175,8 +175,8 @@ struct ServerWidgetView: View {
     }
 
     private func metricBar(title: String, average: Double?, maximum: Double?) -> some View {
-        let avg = min(average ?? 0, 100)
-        let maxVal = min(maximum ?? average ?? 0, 100)
+        let avg = min(max(average ?? 0, 0), 100)
+        let maxVal = min(max(maximum ?? average ?? 0, avg), 100)
 
         return VStack(alignment: .leading, spacing: 4) {
             HStack {
@@ -189,20 +189,22 @@ struct ServerWidgetView: View {
                 if let maximum, maximum > (average ?? 0) + 0.5 {
                     Text("max \(formatted(maximum))%")
                         .font(.caption2.bold().monospacedDigit())
-                        .foregroundStyle(.red)
+                        .foregroundStyle(.red.opacity(0.9))
                 }
             }
             GeometryReader { geo in
+                let maxWidth = geo.size.width * CGFloat(maxVal / 100)
+                let avgWidth = geo.size.width * CGFloat(avg / 100)
+
                 ZStack(alignment: .leading) {
                     Capsule()
                         .fill(Color.white.opacity(0.08))
                     Capsule()
-                        .fill(barColor(for: average))
-                        .frame(width: geo.size.width * CGFloat(avg / 100))
-                    Rectangle()
-                        .fill(Color.red)
-                        .frame(width: 2, height: 11)
-                        .offset(x: max(0, geo.size.width * CGFloat(maxVal / 100) - 1))
+                        .fill(Color.red.opacity(0.75))
+                        .frame(width: max(maxWidth, avgWidth))
+                    Capsule()
+                        .fill(Color.green)
+                        .frame(width: avgWidth)
                 }
             }
             .frame(height: 8)
@@ -212,13 +214,6 @@ struct ServerWidgetView: View {
     private func formatted(_ value: Double?) -> String {
         guard let value else { return "—" }
         return String(format: "%.0f", value)
-    }
-
-    private func barColor(for value: Double?) -> Color {
-        guard let value else { return .secondary }
-        if value >= 85 { return .red }
-        if value >= 65 { return .orange }
-        return .green
     }
 
     private func refresh() async {
