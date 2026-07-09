@@ -114,9 +114,16 @@ struct ServerWidgetView: View {
                     metricBar(title: "CPU", average: metrics?.cpuPercent, maximum: metrics?.cpuPercentMax)
                     metricBar(title: "RAM", average: metrics?.ramPercent, maximum: metrics?.ramPercentMax)
                     metricBar(title: "Disk", average: metrics?.diskUsedPercent, maximum: metrics?.diskUsedPercentMax)
+                    loadRow
+                    if let temp = metrics?.cpuTempC {
+                        metricValueRow(
+                            title: "Teplota CPU",
+                            value: String(format: "%.1f°C", temp),
+                            maxValue: metrics?.cpuTempCMax
+                        )
+                    }
                 }
-
-                loadRow
+                .frame(maxWidth: .infinity, alignment: .leading)
             } else if online {
                 HStack(spacing: 8) {
                     ProgressView()
@@ -136,19 +143,35 @@ struct ServerWidgetView: View {
     }
 
     private var loadRow: some View {
+        let maxLabel: String? = {
+            guard let maxLoad = metrics?.loadAvgMax,
+                  let avg = metrics?.loadAvg,
+                  maxLoad > avg + 0.05 else { return nil }
+            return "max \(formatted(maxLoad))"
+        }()
+
+        return metricValueRow(
+            title: "Load",
+            value: formatted(metrics?.loadAvg),
+            maxValue: maxLabel
+        )
+    }
+
+    private func metricValueRow(title: String, value: String, maxValue: String?) -> some View {
         HStack {
-            Text("Load")
+            Text(title)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
             Spacer()
-            Text(formatted(metrics?.loadAvg))
+            Text(value)
                 .font(.caption.bold().monospacedDigit())
-            if let maxLoad = metrics?.loadAvgMax, let avg = metrics?.loadAvg, maxLoad > avg + 0.05 {
-                Text("max \(formatted(maxLoad))")
+            if let maxValue {
+                Text(maxValue)
                     .font(.caption2.bold().monospacedDigit())
                     .foregroundStyle(.red)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var statusDot: some View {
@@ -209,6 +232,7 @@ struct ServerWidgetView: View {
             }
             .frame(height: 8)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func formatted(_ value: Double?) -> String {

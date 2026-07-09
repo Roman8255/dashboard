@@ -19,6 +19,8 @@ struct ServerMetricsSnapshot: Codable, Equatable {
     let diskUsedPercentMax: Double?
     let loadAvg: Double
     let loadAvgMax: Double?
+    let cpuTempC: Double?
+    let cpuTempCMax: Double?
     let reportedAt: String
 
     var ramPercent: Double? {
